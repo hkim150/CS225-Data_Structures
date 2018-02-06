@@ -1,0 +1,22 @@
+Grading r1652 by hkim150 committed on Thu Jan 19 22:01:23 CST 2017
+Monad Autograder
+Testing lab_intro at 2017-01-23 00:17:35
+
+"(reading a password) Uppercase 0... [...] Lowercase 0..." ~ Sean Massung
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testBrighten  . [33 pts] - passed
+testCrosshairs  [33 pts] - passed
+testBlendImages [34 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 100
+

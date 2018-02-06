@@ -1,0 +1,450 @@
+Grading r16723 by parisfe2 committed on Fri Feb 17 14:03:05 CST 2017
+Monad Autograder
+Testing lab_gdb2 at 2017-02-20 00:25:01
+
+"Eighty percent of success is showing up." ~ Woody Allen
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testFind1_I . . . . . . [5 pts]  - FAILED: Segmentation fault
+testFind1_R . . . . . . [5 pts]  - FAILED: Segmentation fault
+testFind2_I . . . . . . [5 pts]  - passed
+testFind2_R . . . . . . [5 pts]  - FAILED: Segmentation fault
+testFind3_I . . . . . . [10 pts] - FAILED: Segmentation fault
+testFind3_R . . . . . . [10 pts] - FAILED: Segmentation fault
+testInsertAscending . . [5 pts]  - FAILED: Segmentation fault
+testInsertAscendingBack [5 pts]  - FAILED: Segmentation fault
+testInsertRandom  . . . [8 pts]  - FAILED: Segmentation fault
+testInsertRandomBack  . [8 pts]  - FAILED: Segmentation fault
+testInsertTough (asan)  [10 pts] - FAILED: Memory errors detected by ASAN
+testRemoveEasy  . . . . [5 pts]  - FAILED: Segmentation fault
+testRemoveHard (asan) . [10 pts] - FAILED: Memory errors detected by ASAN
+testConstructor1 (asan) [4 pts]  - FAILED: Aborted
+testConstructor2 (asan) [5 pts]  - FAILED: Memory errors detected by ASAN
+
+
+Total score...
+================================================================
+TOTAL SCORE: 5
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+testFind1_I [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testFind1_R [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testFind2_R [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testFind3_I [10 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testFind3_R [10 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testInsertAscending [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testInsertAscendingBack [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testInsertRandom [8 points]
+Result: FAILED: Segmentation fault
+Took 0ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testInsertRandomBack [8 points]
+Result: FAILED: Segmentation fault
+Took 0ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testInsertTough (run under asan) [10 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (1000ms timeout)
+Output:
+----------------------------------------------------------------
+Running testInsertTough [worth 10 points, output below]
+=================================================================
+==9509==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000ef68 at pc 0x0000006a33ab bp 0x7ffe28e94510 sp 0x7ffe28e94508
+WRITE of size 8 at 0x60200000ef68 thread T0
+    #0 0x6a33aa in SkipList::insert(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a33aa)
+    #1 0x663345 in proxy_test::testInsertTough(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x663345)
+    #2 0x4eb038 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4eb038)
+    #3 0x4d0183 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4d0183)
+    #4 0x4c120c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4c120c)
+    #5 0x4bb882 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4bb882)
+    #6 0x4b1547 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b1547)
+    #7 0x4b06e7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b06e7)
+    #8 0x4ace49 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4ace49)
+    #9 0x4aa79e in main (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4aa79e)
+    #10 0x7f7446249b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+    #11 0x4a3319 in _start (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4a3319)
+
+0x60200000ef68 is located 8 bytes to the right of 16-byte region [0x60200000ef50,0x60200000ef60)
+allocated by thread T0 here:
+    #0 0x41e92b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x6aa30e in std::__1::__split_buffer<SkipPointer, std::__1::allocator<SkipPointer>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<SkipPointer>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6aa30e)
+    #2 0x6a908c in void std::__1::vector<SkipPointer, std::__1::allocator<SkipPointer> >::__push_back_slow_path<SkipPointer>(SkipPointer&&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a908c)
+    #3 0x6b26a9 in SkipNode::SkipNode(int, RGBAPixel, int) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6b26a9)
+    #4 0x6a19ae in SkipList::insert(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a19ae)
+    #5 0x663345 in proxy_test::testInsertTough(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x663345)
+    #6 0x4eb038 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4eb038)
+    #7 0x4d0183 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4d0183)
+    #8 0x4c120c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4c120c)
+    #9 0x4bb882 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4bb882)
+    #10 0x4b1547 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b1547)
+    #11 0x4b06e7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b06e7)
+    #12 0x4ace49 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4ace49)
+    #13 0x4aa79e in main (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4aa79e)
+    #14 0x7f7446249b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 SkipList::insert(int, RGBAPixel)
+Shadow bytes around the buggy address:
+  0x0c047fff9d90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c047fff9de0: fa fa fa fa fa fa fa fa fa fa 00 00 fa[fa]fd fd
+  0x0c047fff9df0: fa fa 00 00 fa fa fd fd fa fa fd fd fa fa fd fa
+  0x0c047fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  ASan internal:           fe
+==9509==ABORTING
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+----------------------------------------------------------------
+testRemoveEasy [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+testRemoveHard (run under asan) [10 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (1000ms timeout)
+Output:
+----------------------------------------------------------------
+Running testRemoveHard [worth 10 points, output below]
+=================================================================
+==9516==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000ef40 at pc 0x0000006a290e bp 0x7ffeac2d2850 sp 0x7ffeac2d2848
+WRITE of size 8 at 0x60200000ef40 thread T0
+    #0 0x6a290d in SkipList::insert(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a290d)
+    #1 0x6678ce in proxy_test::testRemoveHard(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6678ce)
+    #2 0x4eb038 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4eb038)
+    #3 0x4d0183 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4d0183)
+    #4 0x4c120c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4c120c)
+    #5 0x4bb882 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4bb882)
+    #6 0x4b1547 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b1547)
+    #7 0x4b06e7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b06e7)
+    #8 0x4ace49 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4ace49)
+    #9 0x4aa79e in main (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4aa79e)
+    #10 0x7fef1f946b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+    #11 0x4a3319 in _start (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4a3319)
+
+0x60200000ef40 is located 0 bytes to the right of 16-byte region [0x60200000ef30,0x60200000ef40)
+allocated by thread T0 here:
+    #0 0x41e92b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x6aa30e in std::__1::__split_buffer<SkipPointer, std::__1::allocator<SkipPointer>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<SkipPointer>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6aa30e)
+    #2 0x6a908c in void std::__1::vector<SkipPointer, std::__1::allocator<SkipPointer> >::__push_back_slow_path<SkipPointer>(SkipPointer&&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a908c)
+    #3 0x6b26a9 in SkipNode::SkipNode(int, RGBAPixel, int) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6b26a9)
+    #4 0x6a19ae in SkipList::insert(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a19ae)
+    #5 0x6678ce in proxy_test::testRemoveHard(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6678ce)
+    #6 0x4eb038 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4eb038)
+    #7 0x4d0183 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4d0183)
+    #8 0x4c120c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4c120c)
+    #9 0x4bb882 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4bb882)
+    #10 0x4b1547 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b1547)
+    #11 0x4b06e7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b06e7)
+    #12 0x4ace49 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4ace49)
+    #13 0x4aa79e in main (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4aa79e)
+    #14 0x7fef1f946b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 SkipList::insert(int, RGBAPixel)
+Shadow bytes around the buggy address:
+  0x0c047fff9d90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c047fff9de0: fa fa fa fa fa fa 00 00[fa]fa 04 fa fa fa fd fd
+  0x0c047fff9df0: fa fa 00 00 fa fa fd fd fa fa fd fd fa fa fd fa
+  0x0c047fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  ASan internal:           fe
+==9516==ABORTING
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+----------------------------------------------------------------
+testConstructor1 (run under asan) [4 points]
+Result: FAILED: Aborted
+Took unknown time (1000ms timeout)
+Output:
+----------------------------------------------------------------
+Running testConstructor1 [worth 4 points, output below]
+terminating with uncaught exception of type std::length_error: vector
+Terminated by SIGABRT
+Result: FAILED:
+Aborted
+
+----------------------------------------------------------------
+testConstructor2 (run under asan) [5 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (1000ms timeout)
+Output:
+----------------------------------------------------------------
+Running testConstructor2 [worth 5 points, output below]
+=================================================================
+==9526==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffc032ef2d0 at pc 0x0000006a484c bp 0x7ffc032ebcb0 sp 0x7ffc032ebca8
+READ of size 8 at 0x7ffc032ef2d0 thread T0
+    #0 0x6a484b in SkipList::findI(int) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a484b)
+    #1 0x6a3cb2 in SkipList::find(int) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a3cb2)
+    #2 0x69eeb6 in SkipList::insert(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x69eeb6)
+    #3 0x69def3 in SkipList::SkipList(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x69def3)
+    #4 0x66bead in proxy_test::testConstructor2(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x66bead)
+    #5 0x4eb038 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4eb038)
+    #6 0x4d0183 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4d0183)
+    #7 0x4c120c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4c120c)
+    #8 0x4bb882 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4bb882)
+    #9 0x4b1547 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b1547)
+    #10 0x4b06e7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b06e7)
+    #11 0x4ace49 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4ace49)
+    #12 0x4aa79e in main (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4aa79e)
+    #13 0x7fd20a788b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+    #14 0x4a3319 in _start (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4a3319)
+
+Address 0x7ffc032ef2d0 is located in stack of thread T0 at offset 2864 in frame
+    #0 0x66b18f in proxy_test::testConstructor2(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x66b18f)
+
+  This frame has 108 object(s):
+    [32, 40) ''
+    [64, 72) ''
+    [96, 97) ''
+    [112, 120) ''
+    [144, 152) ''
+    [176, 184) ''
+    [208, 216) ''
+    [240, 248) ''
+    [272, 280) ''
+    [304, 312) ''
+    [336, 337) ''
+    [352, 360) ''
+    [384, 392) ''
+    [416, 424) ''
+    [448, 456) ''
+    [480, 488) ''
+    [512, 520) ''
+    [544, 552) ''
+    [576, 577) ''
+    [592, 593) ''
+    [608, 616) ''
+    [640, 648) ''
+    [672, 680) ''
+    [704, 712) ''
+    [736, 744) ''
+    [768, 776) ''
+    [800, 808) ''
+    [832, 840) ''
+    [864, 872) ''
+    [896, 904) ''
+    [928, 936) ''
+    [960, 968) ''
+    [992, 1000) ''
+    [1024, 1032) ''
+    [1056, 1064) ''
+    [1088, 1096) ''
+    [1120, 1121) ''
+    [1136, 1144) ''
+    [1168, 1176) ''
+    [1200, 1208) ''
+    [1232, 1240) ''
+    [1264, 1272) ''
+    [1296, 1304) ''
+    [1328, 1336) ''
+    [1360, 1361) ''
+    [1376, 1377) ''
+    [1392, 1400) ''
+    [1424, 1432) ''
+    [1456, 1464) ''
+    [1488, 1496) ''
+    [1520, 1528) ''
+    [1552, 1560) ''
+    [1584, 1592) ''
+    [1616, 1624) ''
+    [1648, 1656) ''
+    [1680, 1688) ''
+    [1712, 1720) ''
+    [1744, 1752) ''
+    [1776, 1784) ''
+    [1808, 1816) ''
+    [1840, 1848) ''
+    [1872, 1880) ''
+    [1904, 1905) ''
+    [1920, 1928) ''
+    [1952, 1960) ''
+    [1984, 1992) ''
+    [2016, 2024) ''
+    [2048, 2056) ''
+    [2080, 2088) ''
+    [2112, 2120) ''
+    [2144, 2145) ''
+    [2160, 2161) ''
+    [2176, 2184) ''
+    [2208, 2216) ''
+    [2240, 2248) ''
+    [2272, 2280) ''
+    [2304, 2312) ''
+    [2336, 2344) ''
+    [2368, 2376) ''
+    [2400, 2408) ''
+    [2432, 2440) ''
+    [2464, 2472) ''
+    [2496, 2504) ''
+    [2528, 2536) ''
+    [2560, 2568) ''
+    [2592, 2600) ''
+    [2624, 2632) ''
+    [2656, 2664) ''
+    [2688, 2696) ''
+    [2720, 2728) ''
+    [2752, 2760) ''
+    [2784, 2792) ''
+    [2816, 2848) 'list'
+    [2880, 2884) '' <== Memory access at offset 2864 underflows this variable
+    [2896, 2900) ''
+    [2912, 2920) ''
+    [2944, 2948) ''
+    [2960, 2964) ''
+    [2976, 3000) 'soln'
+    [3040, 3044) ''
+    [3056, 3060) ''
+    [3072, 3076) ''
+    [3088, 3112) 'check'
+    [3152, 3176) ''
+    [3216, 3240) ''
+    [3280, 3304) ''
+    [3344, 3368) ''
+    [3408, 3432) ''
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism or swapcontext
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow ??:0 SkipList::findI(int)
+Shadow bytes around the buggy address:
+  0x100000655e00: 01 f2 01 f2 00 f2 f2 f2 00 f2 f2 f2 00 f2 f2 f2
+  0x100000655e10: 00 f2 f2 f2 00 f2 f2 f2 00 f2 f2 f2 00 f2 f2 f2
+  0x100000655e20: 00 f2 f2 f2 00 f2 f2 f2 00 f2 f2 f2 00 f2 f2 f2
+  0x100000655e30: 00 f2 f2 f2 00 f2 f2 f2 00 f2 f2 f2 00 f2 f2 f2
+  0x100000655e40: 00 f2 f2 f2 00 f2 f2 f2 00 f2 f2 f2 00 f2 f2 f2
+=>0x100000655e50: 00 f2 f2 f2 00 00 00 00 f2 f2[f2]f2 04 f2 04 f2
+  0x100000655e60: 00 f2 f2 f2 04 f2 04 f2 00 00 00 f2 f2 f2 f2 f2
+  0x100000655e70: 04 f2 04 f2 04 f2 00 00 00 f2 f2 f2 f2 f2 00 00
+  0x100000655e80: 00 f2 f2 f2 f2 f2 00 00 00 f2 f2 f2 f2 f2 00 00
+  0x100000655e90: 00 f2 f2 f2 f2 f2 00 00 00 f2 f2 f2 f2 f2 00 00
+  0x100000655ea0: 00 f3 f3 f3 f3 f3 f3 f3 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  ASan internal:           fe
+==9526==ABORTING
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 5
+
